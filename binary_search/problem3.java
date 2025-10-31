@@ -24,7 +24,7 @@ public class problem3 {
     public static int FinderPeakPoint(int[] arr, int len) {
         int s = 0;
         int e = len - 1;
-        int m = s + (e - s) / 2;
+        int m;
         while (s < e) {
             m = s + (e - s) / 2;
            if (arr[m] < arr[m + 1]) {

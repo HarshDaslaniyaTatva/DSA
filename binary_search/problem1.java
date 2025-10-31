@@ -9,32 +9,31 @@ import java.util.Scanner;
 public class problem1 {
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int len = sc.nextInt();
-        int ele = sc.nextInt();
-        int[] arr = new int[len];
-        for (int i = 0; i < len; i++) {
-            arr[i] = sc.nextInt();
+        try (Scanner sc = new Scanner(System.in)) {
+            int len = sc.nextInt();
+            int ele = sc.nextInt();
+            int[] arr = new int[len];
+            for (int i = 0; i < len; i++) {
+                arr[i] = sc.nextInt();
+            }
+            int firstOccurrence = firstOccurrence(arr, ele, len);
+            int lastOccurrence = lastOccurrence(arr, ele, len);
+
+            System.out.println(firstOccurrence + " , " + lastOccurrence);
         }
-        int firstOccurrence = firstOccurrence(arr, ele, len);
-        int lastOccurrence = lastOccurrence(arr, ele, len);
-
-        System.out.println(firstOccurrence + " , " + lastOccurrence);
-
     }
 
     public static int firstOccurrence(int[] arr, int ele, int len) {
         int ans = -1;
         int s = 0;
         int e = len - 1;
-        int m = s + (e - s) / 2;
+        int m;
         while (s <= e) {
             m = s + (e - s) / 2;
             if (arr[m] == ele) {
                 ans = m;
                 e = m - 1;
-            }
-            else if (arr[m] < ele) {
+            } else if (arr[m] < ele) {
                 s = m + 1;
             } else {
                 e = m - 1;
@@ -47,14 +46,13 @@ public class problem1 {
         int ans = -1;
         int s = 0;
         int e = len - 1;
-        int m = s + (e - s) / 2;
+        int m;
         while (s <= e) {
             m = s + (e - s) / 2;
             if (arr[m] == ele) {
                 ans = m;
                 s = m + 1;
-            }
-            else if (arr[m] < ele) {
+            } else if (arr[m] < ele) {
                 s = m + 1;
             } else {
                 e = m - 1;
